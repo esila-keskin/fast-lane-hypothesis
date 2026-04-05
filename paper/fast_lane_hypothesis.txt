@@ -113,10 +113,10 @@
   \vspace{1em}
 }]
 
-% ─────────────────────────────────────────────────────────────────────────────
+
 \section{Introduction}
 \label{sec:intro}
-% ─────────────────────────────────────────────────────────────────────────────
+
 
 \subsection{The Anatomical Puzzle of Von Economo Neurons}
 
@@ -185,10 +185,9 @@ Ablating \VENs\ after network calibration (\FTD) produces a larger functional
 deficit than developmental reduction, because the circuit was tuned to rely
 on \VEN\ input that is then removed.}
 
-% ─────────────────────────────────────────────────────────────────────────────
+
 \section{Methods}
 \label{sec:methods}
-% ─────────────────────────────────────────────────────────────────────────────
 
 \subsection{Model Architecture}
 \label{sec:architecture}
@@ -276,10 +275,9 @@ If no threshold is crossed within $T = 50$\,ms, RT $= 50$\,ms.
 This implements a discrete analogue of the drift-diffusion model
 \citep{ratcliff2008}.
 
-% ─────────────────────────────────────────────────────────────────────────────
+
 \section{Results}
 \label{sec:results}
-% ─────────────────────────────────────────────────────────────────────────────
 
 \subsection{All VEN Fractions Achieve Equivalent Asymptotic Accuracy}
 \label{sec:results_accuracy}
@@ -485,10 +483,8 @@ Chance & 50.0 & 25.0 & 16.7 & 12.5 &  8.3 &  6.3 \\
 \end{tabular}
 \end{table}
 
-% ─────────────────────────────────────────────────────────────────────────────
 \section{Discussion}
 \label{sec:discussion}
-% ─────────────────────────────────────────────────────────────────────────────
 
 \subsection{Summary of Findings}
 
@@ -582,10 +578,9 @@ sharper temporal dynamics more amenable to threshold-based SAT measurement.
 evolutionary claims require $\geq$200 epochs, larger networks, and multi-seed
 evaluation.
 
-% ─────────────────────────────────────────────────────────────────────────────
+
 \section{Future Directions}
 \label{sec:future}
-% ─────────────────────────────────────────────────────────────────────────────
 
 In priority order:
 (1)~20-seed replication of clinical conditions to confirm the typical
@@ -596,10 +591,8 @@ in autism-like compensation.
 (4)~Multi-modal stimuli over 200\,ms to better probe the \VEN\ speed advantage.
 (5)~Evolutionary replication at $\geq$200 epochs with multi-seed evaluation.
 
-% ─────────────────────────────────────────────────────────────────────────────
 \section{Conclusion}
 \label{sec:conclusion}
-% ─────────────────────────────────────────────────────────────────────────────
 
 We have introduced and tested the Fast Lane Hypothesis: \vens\ implement a
 biological \sat\ by providing a sparse, fast projection pathway within

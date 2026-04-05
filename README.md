@@ -30,11 +30,13 @@ This repository contains the full implementation of the **Fast Lane Hypothesis**
 ---
 
 ## Architecture
+```
 Input (100-dim Poisson spikes)
 ├── Pyramidal LIF neurons  (τ=20ms, fan-in=80, recurrent p=0.15)
 └── VEN LIF neurons        (τ=5ms,  fan-in=8,  no recurrence)
-└──────────────┬──────────────────┘
-Output readout (2 classes)
+            └──────────────┬──────────────────┘
+                   Output readout (2 classes)
+```
 
 ---
 
@@ -48,27 +50,28 @@ Output readout (2 classes)
 
 The autism-like model compensates during training by routing more information through the pyramidal pathway. The FTD-like model is trained with full VENs then ablated — producing a larger, less-compensable deficit. This developmental vs degenerative asymmetry mirrors the clinical literature precisely, and emerges without any condition-specific tuning.
 
----
-
 ## Repository Structure
+```
 fast-lane-hypothesis/
 ├── models/
-│   ├── init.py
-│   └── ven_circuit.py          # Core SNN architecture (VENCircuit)
+│   ├── __init__.py
+│   └── ven_circuit.py              # Core SNN architecture (VENCircuit)
 ├── tasks/
-│   ├── init.py
-│   └── social_task.py          # Social discrimination task (Poisson spikes)
+│   ├── __init__.py
+│   └── social_task.py              # Social discrimination task
 ├── analysis/
-│   ├── latency_analysis.py     # First-spike latency across conditions (Fig 3)
-│   └── threshold_sensitivity.py # SAT sweep, 5 seeds (Fig 4)
-├── figures/                    # Generated PDF figures
-├── results/                    # JSON results from multi-seed runs
+│   ├── latency_analysis.py         # First-spike latency (Fig 3)
+│   └── threshold_sensitivity.py    # SAT sweep, 5 seeds (Fig 4)
+├── figures/                        # Generated PDF figures
+├── results/                        # JSON results from multi-seed runs
 ├── paper/
-│   └── fast_lane_hypothesis.tex # Full manuscript (LaTeX)
-├── config.py                   # All hyperparameters
-├── run_experiment.py           # Main experiment entry point
+│   └── fast_lane_hypothesis.tex    # Full manuscript (LaTeX)
+├── config.py                       # All hyperparameters
+├── run_experiment.py               # Main experiment entry point
 ├── requirements.txt
 └── README.md
+```
+
 ---
 
 ## Installation

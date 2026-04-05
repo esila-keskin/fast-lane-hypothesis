@@ -8,85 +8,109 @@
 [![Framework](https://img.shields.io/badge/framework-SpikingJelly-orange.svg)](https://github.com/fangwei123456/spikingjelly)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
+---
+
 ## Overview
 
-Von Economo neurons (VENs) are large, fast projection neurons found exclusively 
-in species with complex social cognition. Their selective depletion in 
-frontotemporal dementia (FTD) and altered development in autism implicate them 
-in rapid social decision-making, yet no computational model of VEN function 
-previously existed.
+Von Economo neurons (VENs) are large, fast projection neurons found exclusively in species with complex social cognition. Their selective depletion in frontotemporal dementia (FTD) and altered development in autism implicate them in rapid social decision-making, yet no computational model of VEN function previously existed.
 
-This repository contains the full implementation of the **Fast Lane Hypothesis**: 
-VENs implement a biological speed-accuracy tradeoff by providing a sparse, fast 
-projection pathway that enables rapid social decisions.
+This repository contains the full implementation of the **Fast Lane Hypothesis**: VENs implement a biological speed-accuracy tradeoff by providing a sparse, fast projection pathway that enables rapid social decisions.
+
+---
 
 ## Key Results
 
-- All VEN fractions achieve equivalent asymptotic accuracy (~99%), confirming 
-  VENs modulate **speed**, not representational capacity
-- VENs fire with a **4ms earlier median first-spike latency** than pyramidal neurons
-- FTD-like ablation is **consistently the slowest** decision-maker across all 
-  decision thresholds (θ = 1–5)
-- The developmental (autism-like) vs degenerative (FTD-like) asymmetry emerges 
-  naturally from the architecture — without condition-specific tuning
+| Finding | Result |
+|---------|--------|
+| Asymptotic accuracy | All VEN fractions achieve ~99.7% — VENs modulate **speed**, not capacity |
+| First-spike latency | VENs fire **4ms earlier** than pyramidal neurons (median) |
+| FTD vs Typical | FTD significantly slower at θ=1–4 (p < 0.001) |
+| Clinical asymmetry | Autism-like vs FTD-like distinction emerges from architecture alone |
+
+---
 
 ## Architecture
-<img width="509" height="115" alt="image" src="https://github.com/user-attachments/assets/23ddbd12-6213-4250-b63c-2ae1b863e840" />
+Input (100-dim Poisson spikes)
+├── Pyramidal LIF neurons  (τ=20ms, fan-in=80, recurrent p=0.15)
+└── VEN LIF neurons        (τ=5ms,  fan-in=8,  no recurrence)
+└──────────────┬──────────────────┘
+Output readout (2 classes)
 
+---
 
-## Clinical Conditions Modelled
+## Clinical Conditions
 
-| Condition | VEN fraction | Method |
-|-----------|-------------|--------|
-| Typical | 2.0% | Normal training |
-| Autism-like | 0.4% | Reduced VENs during training |
+| Condition | VEN Fraction | Mechanism |
+|-----------|-------------|-----------|
+| Typical | 2.0% (40 neurons) | Normal training |
+| Autism-like | 0.4% (8 neurons) | Reduced VENs from initialisation |
 | FTD-like | 2.0% → 0% | Post-training VEN ablation |
 
-## Installation
-```bash
-git clone https://github.com/esilakeskin/fast-lane-hypothesis.git
-cd fast-lane-hypothesis
-pip install -r requirements.txt
-```
+The autism-like model compensates during training by routing more information through the pyramidal pathway. The FTD-like model is trained with full VENs then ablated — producing a larger, less-compensable deficit. This developmental vs degenerative asymmetry mirrors the clinical literature precisely, and emerges without any condition-specific tuning.
 
-## Usage
-```bash
-# Train and evaluate all clinical conditions (10 seeds, Npyr=2000)
-python run_experiment.py
-
-# Reproduce individual figures
-python analysis/latency_analysis.py
-python analysis/threshold_sensitivity.py
-```
+---
 
 ## Repository Structure
 fast-lane-hypothesis/
 ├── models/
-│   └── ven_circuit.py        # Core SNN architecture
+│   ├── init.py
+│   └── ven_circuit.py          # Core SNN architecture (VENCircuit)
 ├── tasks/
-│   └── social_task.py        # Social discrimination task
+│   ├── init.py
+│   └── social_task.py          # Social discrimination task (Poisson spikes)
 ├── analysis/
-│   ├── latency_analysis.py   # First-spike latency (Fig 3)
-│   └── threshold_sensitivity.py  # SAT sweep (Fig 4)
-├── config.py                 # All hyperparameters
-├── run_experiment.py         # Main experiment entry point
+│   ├── latency_analysis.py     # First-spike latency across conditions (Fig 3)
+│   └── threshold_sensitivity.py # SAT sweep, 5 seeds (Fig 4)
+├── figures/                    # Generated PDF figures
+├── results/                    # JSON results from multi-seed runs
+├── paper/
+│   └── fast_lane_hypothesis.tex # Full manuscript (LaTeX)
+├── config.py                   # All hyperparameters
+├── run_experiment.py           # Main experiment entry point
 ├── requirements.txt
 └── README.md
+---
+
+## Installation
+```bash
+git clone https://github.com/esila-keskin/fast-lane-hypothesis.git
+cd fast-lane-hypothesis
+pip install -r requirements.txt
+```
+
+---
+
+## Usage
+```bash
+# Reproduce the main clinical conditions experiment (10 seeds, Npyr=2000)
+python run_experiment.py
+
+# Reproduce Figure 3 — first-spike latency analysis
+python analysis/latency_analysis.py
+
+# Reproduce Figure 4 — threshold sensitivity (5 seeds)
+python analysis/threshold_sensitivity.py
+```
+
+---
 
 ## Paper
 
-**The Fast Lane Hypothesis: Von Economo Neurons Implement a Biological 
-Speed-Accuracy Tradeoff**  
-Esila Keskin, University of the West of England, Bristol (2026)
+**The Fast Lane Hypothesis: Von Economo Neurons Implement a Biological Speed-Accuracy Tradeoff**  
+Esila Keskin - University of the West of England, Bristol (2026)
 
 *Preprint coming soon.*
+
+---
 
 ## Requirements
 
 - Python 3.10+
 - PyTorch 2.0+
-- SpikingJelly
+- SpikingJelly ≥ 0.0.0.0.14
 - NumPy, SciPy, Matplotlib
+
+---
 
 ## License
 

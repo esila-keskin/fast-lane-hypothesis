@@ -31,11 +31,8 @@ projection pathway that enables rapid social decisions.
   naturally from the architecture — without condition-specific tuning
 
 ## Architecture
-Input (100-dim Poisson spikes)
-├── Pyramidal LIF neurons (τ=20ms, fan-in=80, recurrent p=0.15)
-└── VEN LIF neurons       (τ=5ms,  fan-in=8,  no recurrence)
-└──────────────┬──────────────────┘
-Output readout (2 classes)
+<img width="509" height="115" alt="image" src="https://github.com/user-attachments/assets/23ddbd12-6213-4250-b63c-2ae1b863e840" />
+
 
 ## Clinical Conditions Modelled
 

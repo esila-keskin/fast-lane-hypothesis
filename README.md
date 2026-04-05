@@ -22,7 +22,7 @@ This repository contains the full implementation of the **Fast Lane Hypothesis**
 
 | Finding | Result |
 |---------|--------|
-| Asymptotic accuracy | All VEN fractions achieve ~99.7% — VENs modulate **speed**, not capacity |
+| Asymptotic accuracy | All VEN fractions achieve ~99.7% - VENs modulate **speed**, not capacity |
 | First-spike latency | VENs fire **4ms earlier** than pyramidal neurons (median) |
 | FTD vs Typical | FTD significantly slower at θ=1–4 (p < 0.001) |
 | Clinical asymmetry | Autism-like vs FTD-like distinction emerges from architecture alone |
@@ -48,7 +48,7 @@ Input (100-dim Poisson spikes)
 | Autism-like | 0.4% (8 neurons) | Reduced VENs from initialisation |
 | FTD-like | 2.0% → 0% | Post-training VEN ablation |
 
-The autism-like model compensates during training by routing more information through the pyramidal pathway. The FTD-like model is trained with full VENs then ablated — producing a larger, less-compensable deficit. This developmental vs degenerative asymmetry mirrors the clinical literature precisely, and emerges without any condition-specific tuning.
+The autism-like model compensates during training by routing more information through the pyramidal pathway. The FTD-like model is trained with full VENs then ablated - producing a larger, less-compensable deficit. This developmental vs degenerative asymmetry mirrors the clinical literature precisely, and emerges without any condition-specific tuning.
 
 ## Repository Structure
 ```
@@ -88,10 +88,10 @@ pip install -r requirements.txt
 # Reproduce the main clinical conditions experiment (10 seeds, Npyr=2000)
 python run_experiment.py
 
-# Reproduce Figure 3 — first-spike latency analysis
+# Reproduce Figure 3 - first-spike latency analysis
 python analysis/latency_analysis.py
 
-# Reproduce Figure 4 — threshold sensitivity (5 seeds)
+# Reproduce Figure 4 - threshold sensitivity (5 seeds)
 python analysis/threshold_sensitivity.py
 ```
 

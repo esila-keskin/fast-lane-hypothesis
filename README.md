@@ -104,8 +104,6 @@ python analysis/threshold_sensitivity.py
 **The Fast Lane Hypothesis: Von Economo Neurons Implement a Biological Speed-Accuracy Tradeoff**  
 Esila Keskin - University of the West of England, Bristol (2026)
 
-*Preprint coming soon.*
-
 ---
 
 ## Requirements

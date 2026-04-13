@@ -3,6 +3,7 @@
 **Von Economo Neurons Implement a Biological Speed-Accuracy Tradeoff**
 
 > A computational account of social intuition, autism, and frontotemporal dementia
+> arxiv preprint: **https://arxiv.org/abs/2604.09229**
 
 [![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://python.org)
 [![Framework](https://img.shields.io/badge/framework-SpikingJelly-orange.svg)](https://github.com/fangwei123456/spikingjelly)
